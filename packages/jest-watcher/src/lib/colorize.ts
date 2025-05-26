@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 
 export default function colorize(
   str: string,
@@ -13,8 +13,8 @@ export default function colorize(
   end: number,
 ): string {
   return (
-    chalk.dim(str.slice(0, start)) +
-    chalk.reset(str.slice(start, end)) +
-    chalk.dim(str.slice(end))
+    JestLogger.dim(str.slice(0, start)) +
+    JestLogger.reset(str.slice(start, end)) +
+    JestLogger.dim(str.slice(end))
   );
 }

@@ -6,7 +6,7 @@
  */
 
 import ansiEscapes = require('ansi-escapes');
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import {specialChars} from 'jest-util';
 import type Prompt from './lib/Prompt';
 import type {ScrollOptions} from './types';
@@ -14,10 +14,10 @@ import type {ScrollOptions} from './types';
 const {CLEAR} = specialChars;
 
 const usage = (entity: string) =>
-  `\n${chalk.bold('Pattern Mode Usage')}\n` +
-  ` ${chalk.dim('\u203A Press')} Esc ${chalk.dim('to exit pattern mode.')}\n` +
-  ` ${chalk.dim('\u203A Press')} Enter ` +
-  `${chalk.dim(`to filter by a ${entity} regex pattern.`)}\n` +
+  `\n${JestLogger.bold('Pattern Mode Usage')}\n` +
+  ` ${JestLogger.dim('\u203A Press')} Esc ${JestLogger.dim('to exit pattern mode.')}\n` +
+  ` ${JestLogger.dim('\u203A Press')} Enter ` +
+  `${JestLogger.dim(`to filter by a ${entity} regex pattern.`)}\n` +
   '\n';
 
 const usageRows = usage('').split('\n').length;
