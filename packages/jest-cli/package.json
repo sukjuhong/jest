@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@jest/core": "workspace:*",
+    "@jest/logger": "workspace:*",
     "@jest/test-result": "workspace:*",
     "@jest/types": "workspace:*",
-    "@jest/logger": "workspace:*",
     "exit-x": "^0.2.2",
     "import-local": "^3.0.2",
     "jest-config": "workspace:*",

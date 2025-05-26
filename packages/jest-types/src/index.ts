@@ -8,8 +8,8 @@
 import type * as Circus from './Circus';
 import type * as Config from './Config';
 import type * as Global from './Global';
+import type * as Logger from './Logger';
 import type * as TestResult from './TestResult';
 import type * as TransformTypes from './Transform';
-import type * as Logger from './Logger';
 
 export type {Circus, Config, Global, TestResult, TransformTypes, Logger};

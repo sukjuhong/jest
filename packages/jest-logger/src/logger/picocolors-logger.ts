@@ -16,10 +16,15 @@ export function createPicocolorsLogger(
 ): Logger.Logger {
   const fn = (msg: string) => {
     if (styles.length === 0) return msg;
-    return [...styles].reverse().reduce((acc, style) => {
-      const styleFn = pc[style] as PicocolorsStyleFn;
-      return styleFn(acc);
-    }, msg);
+    return msg
+      .split('\n')
+      .map(line => {
+        return [...styles].reverse().reduce((acc, style) => {
+          const styleFn = pc[style] as PicocolorsStyleFn;
+          return styleFn(acc);
+        }, line);
+      })
+      .join('\n');
   };
 
   const handler = {
