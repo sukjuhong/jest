@@ -13516,13 +13516,13 @@ __metadata:
     "@babel/register": ^7.0.0
     "@jest/environment": "workspace:*"
     "@jest/expect": "workspace:*"
+    "@jest/logger": "workspace:*"
     "@jest/test-result": "workspace:*"
     "@jest/types": "workspace:*"
     "@types/co": ^4.6.2
     "@types/graceful-fs": ^4.1.3
     "@types/node": "*"
     "@types/stack-utils": ^2.0.0
-    chalk: ^4.0.0
     co: ^4.6.0
     dedent: ^1.0.0
     execa: ^5.0.0

@@ -22,10 +22,10 @@
   "dependencies": {
     "@jest/environment": "workspace:*",
     "@jest/expect": "workspace:*",
+    "@jest/logger": "workspace:*",
     "@jest/test-result": "workspace:*",
     "@jest/types": "workspace:*",
     "@types/node": "*",
-    "chalk": "^4.0.0",
     "co": "^4.6.0",
     "dedent": "^1.0.0",
     "is-generator-fn": "^2.0.0",
