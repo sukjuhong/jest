@@ -10968,7 +10968,6 @@ __metadata:
     "@fast-check/jest": ^2.0.0
     "@jest/expect-utils": "workspace:*"
     "@jest/test-utils": "workspace:*"
-    chalk: ^4.0.0
     immutable: ^5.0.0
     jest-get-type: "workspace:*"
     jest-matcher-utils: "workspace:*"
