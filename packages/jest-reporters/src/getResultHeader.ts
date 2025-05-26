@@ -5,25 +5,25 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {TestResult} from '@jest/test-result';
 import type {Config} from '@jest/types';
 import {formatTime} from 'jest-util';
 import formatTestPath from './formatTestPath';
 import printDisplayName from './printDisplayName';
 
-const LONG_TEST_COLOR = chalk.reset.bold.bgRed;
+const LONG_TEST_COLOR = JestLogger.reset.bold.bgRed;
 // Explicitly reset for these messages since they can get written out in the
 // middle of error logging
 const FAIL_TEXT = 'FAIL';
 const PASS_TEXT = 'PASS';
 
-const FAIL = chalk.supportsColor
-  ? chalk.reset.inverse.bold.red(` ${FAIL_TEXT} `)
+const FAIL = JestLogger.supportsColor
+  ? JestLogger.reset.inverse.bold.red(` ${FAIL_TEXT} `)
   : FAIL_TEXT;
 
-const PASS = chalk.supportsColor
-  ? chalk.reset.inverse.bold.green(` ${PASS_TEXT} `)
+const PASS = JestLogger.supportsColor
+  ? JestLogger.reset.inverse.bold.green(` ${PASS_TEXT} `)
   : PASS_TEXT;
 
 export default function getResultHeader(

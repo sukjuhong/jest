@@ -8,7 +8,6 @@
 import * as path from 'path';
 import {mergeProcessCovs} from '@bcoe/v8-coverage';
 import type {EncodedSourceMap} from '@jridgewell/trace-mapping';
-import chalk = require('chalk');
 import {glob} from 'glob';
 import * as fs from 'graceful-fs';
 import istanbulCoverage = require('istanbul-lib-coverage');
@@ -16,6 +15,7 @@ import istanbulReport = require('istanbul-lib-report');
 import libSourceMaps = require('istanbul-lib-source-maps');
 import istanbulReports = require('istanbul-reports');
 import v8toIstanbul = require('v8-to-istanbul');
+import {JestLogger} from '@jest/logger';
 import type {
   AggregatedResult,
   RuntimeTransformResult,
@@ -33,8 +33,8 @@ import type {ReporterContext} from './types';
 
 type CoverageWorker = typeof import('./CoverageWorker');
 
-const FAIL_COLOR = chalk.bold.red;
-const RUNNING_TEST_COLOR = chalk.bold.dim;
+const FAIL_COLOR = JestLogger.bold.red;
+const RUNNING_TEST_COLOR = JestLogger.bold.dim;
 
 export default class CoverageReporter extends BaseReporter {
   private readonly _context: ReporterContext;
@@ -93,7 +93,7 @@ export default class CoverageReporter extends BaseReporter {
       aggregatedResults.coverageMap = map;
     } catch (error: any) {
       console.error(
-        chalk.red(`
+        JestLogger.red(`
         Failed to write coverage reports:
         ERROR: ${error.toString()}
         STACK: ${error.stack}
@@ -192,7 +192,7 @@ export default class CoverageReporter extends BaseReporter {
           }
         } catch (error: any) {
           console.error(
-            chalk.red(
+            JestLogger.red(
               [
                 `Failed to collect coverage from ${filename}`,
                 `ERROR: ${error.message}`,

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {SnapshotSummary} from '@jest/test-result';
 import type {Config} from '@jest/types';
 import {pluralize} from 'jest-util';
@@ -14,13 +14,13 @@ import formatTestPath from './formatTestPath';
 const ARROW = ' \u203A ';
 const DOWN_ARROW = ' \u21B3 ';
 const DOT = ' \u2022 ';
-const FAIL_COLOR = chalk.bold.red;
-const OBSOLETE_COLOR = chalk.bold.yellow;
-const SNAPSHOT_ADDED = chalk.bold.green;
-const SNAPSHOT_NOTE = chalk.dim;
-const SNAPSHOT_REMOVED = chalk.bold.green;
-const SNAPSHOT_SUMMARY = chalk.bold;
-const SNAPSHOT_UPDATED = chalk.bold.green;
+const FAIL_COLOR = JestLogger.bold.red;
+const OBSOLETE_COLOR = JestLogger.bold.yellow;
+const SNAPSHOT_ADDED = JestLogger.bold.green;
+const SNAPSHOT_NOTE = JestLogger.dim;
+const SNAPSHOT_REMOVED = JestLogger.bold.green;
+const SNAPSHOT_SUMMARY = JestLogger.bold;
+const SNAPSHOT_UPDATED = JestLogger.bold.green;
 
 export default function getSnapshotSummary(
   snapshots: SnapshotSummary,

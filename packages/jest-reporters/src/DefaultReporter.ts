@@ -6,8 +6,8 @@
  */
 
 import type {WriteStream} from 'tty';
-import chalk = require('chalk');
 import {getConsoleOutput} from '@jest/console';
+import {JestLogger} from '@jest/logger';
 import type {
   AggregatedResult,
   Test,
@@ -30,7 +30,7 @@ import type {ReporterOnStartOptions} from './types';
 type write = WriteStream['write'];
 type FlushBufferedOutput = () => void;
 
-const TITLE_BULLET = chalk.bold('\u25CF ');
+const TITLE_BULLET = JestLogger.bold('\u25CF ');
 
 export default class DefaultReporter extends BaseReporter {
   private _clear: string; // ANSI clear sequence for the last printed status
@@ -206,20 +206,20 @@ export default class DefaultReporter extends BaseReporter {
       const testRetryReasons = testResult.retryReasons;
       if (testRetryReasons && testRetryReasons.length > 0) {
         this.log(
-          `${chalk.reset.inverse.bold.yellow(' LOGGING RETRY ERRORS ')} ${chalk.bold(testResult.fullName)}`,
+          `${JestLogger.reset.inverse.bold.yellow(' LOGGING RETRY ERRORS ')} ${JestLogger.bold(testResult.fullName)}`,
         );
         for (const [index, retryReasons] of testRetryReasons.entries()) {
           let {message, stack} = separateMessageFromStack(retryReasons);
           stack = this._globalConfig.noStackTrace
             ? ''
-            : chalk.dim(
+            : JestLogger.dim(
                 formatStackTrace(stack, config, this._globalConfig, testPath),
               );
 
           message = indentAllLines(message);
 
           this.log(
-            `${chalk.reset.inverse.bold.blueBright(` RETRY ${index + 1} `)}\n`,
+            `${JestLogger.reset.inverse.bold.blueBright(` RETRY ${index + 1} `)}\n`,
           );
           this.log(`${message}\n${stack}\n`);
         }

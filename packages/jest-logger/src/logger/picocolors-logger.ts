@@ -32,11 +32,15 @@ export function createPicocolorsLogger(
       return fn(args[0]);
     },
     get(_target: any, prop: string | symbol) {
+      if (prop === 'supportsColor') {
+        return pc.isColorSupported;
+      }
+
       if (typeof prop === 'string' && prop in pc) {
         return createPicocolorsLogger([...styles, prop as PicocolorsStyle]);
       }
 
-      return fn;
+      return undefined;
     },
   };
 

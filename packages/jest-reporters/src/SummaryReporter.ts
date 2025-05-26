@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {
   AggregatedResult,
   SnapshotSummary,
@@ -131,7 +131,7 @@ export default class SummaryReporter extends BaseReporter {
       if (!this._globalConfig.silent) {
         message += `\n${
           wasInterrupted
-            ? chalk.bold.red('Test run was interrupted.')
+            ? JestLogger.bold.red('Test run was interrupted.')
             : this._getTestSummary(testContexts, this._globalConfig)
         }`;
       }
@@ -194,7 +194,7 @@ export default class SummaryReporter extends BaseReporter {
       failedTests + runtimeErrors > 0 &&
       aggregatedResults.numTotalTestSuites > this._summaryThreshold
     ) {
-      this.log(chalk.bold('Summary of all failing tests'));
+      this.log(JestLogger.bold('Summary of all failing tests'));
       for (const testResult of aggregatedResults.testResults) {
         const {failureMessage} = testResult;
         if (failureMessage) {
@@ -218,15 +218,15 @@ export default class SummaryReporter extends BaseReporter {
         ? ' related to files matching '
         : ' matching ';
 
-      return chalk.dim(prefix) + testPathPatterns.toPretty();
+      return JestLogger.dim(prefix) + testPathPatterns.toPretty();
     };
 
     let testInfo = '';
 
     if (globalConfig.runTestsByPath) {
-      testInfo = chalk.dim(' within paths');
+      testInfo = JestLogger.dim(' within paths');
     } else if (globalConfig.onlyChanged) {
-      testInfo = chalk.dim(' related to changed files');
+      testInfo = JestLogger.dim(' related to changed files');
     } else if (testPathPatterns.isSet()) {
       testInfo = getMatchingTestsInfo();
     }
@@ -236,22 +236,24 @@ export default class SummaryReporter extends BaseReporter {
     if (globalConfig.runTestsByPath) {
       nameInfo = ` ${globalConfig.nonFlagArgs.map(p => `"${p}"`).join(', ')}`;
     } else if (globalConfig.testNamePattern) {
-      nameInfo = `${chalk.dim(' with tests matching ')}"${
+      nameInfo = `${JestLogger.dim(' with tests matching ')}"${
         globalConfig.testNamePattern
       }"`;
     }
 
     const contextInfo =
       testContexts.size > 1
-        ? chalk.dim(' in ') + testContexts.size + chalk.dim(' projects')
+        ? JestLogger.dim(' in ') +
+          testContexts.size +
+          JestLogger.dim(' projects')
         : '';
 
     return (
-      chalk.dim('Ran all test suites') +
+      JestLogger.dim('Ran all test suites') +
       testInfo +
       nameInfo +
       contextInfo +
-      chalk.dim('.')
+      JestLogger.dim('.')
     );
   }
 }

@@ -6,7 +6,7 @@
  */
 
 import * as path from 'path';
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import stripAnsi = require('strip-ansi');
 import {makeProjectConfig} from '@jest/test-utils';
 import printDisplayName from '../printDisplayName';
@@ -16,10 +16,10 @@ import wrapAnsiString from '../wrapAnsiString';
 describe('wrapAnsiString()', () => {
   it('wraps a long string containing ansi chars', () => {
     const string =
-      `abcde ${chalk.red.bold('red-bold')} 1234456` +
-      `${chalk.dim('bcd')} ` +
+      `abcde ${JestLogger.red.bold('red-bold')} 1234456` +
+      `${JestLogger.dim('bcd')} ` +
       '123ttttttththththththththththththththththththththth' +
-      `tetetetetettetetetetetetetete${chalk.underline.bold('stnhsnthsnth')}` +
+      `tetetetetettetetetetetetetete${JestLogger.underline.bold('stnhsnthsnth')}` +
       'ssot';
     expect(wrapAnsiString(string, 10)).toMatchSnapshot();
     expect(stripAnsi(wrapAnsiString(string, 10))).toMatchSnapshot();

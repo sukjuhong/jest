@@ -16,12 +16,12 @@
   "dependencies": {
     "@bcoe/v8-coverage": "^0.2.3",
     "@jest/console": "workspace:*",
+    "@jest/logger": "workspace:*",
     "@jest/test-result": "workspace:*",
     "@jest/transform": "workspace:*",
     "@jest/types": "workspace:*",
     "@jridgewell/trace-mapping": "^0.3.18",
     "@types/node": "*",
-    "chalk": "^4.0.0",
     "collect-v8-coverage": "^1.0.0",
     "exit-x": "^0.2.2",
     "glob": "^10.3.10",

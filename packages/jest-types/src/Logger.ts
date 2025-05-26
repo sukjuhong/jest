@@ -5,15 +5,50 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type Color =
+export type ForegroundColor =
+  | 'black'
   | 'red'
   | 'green'
   | 'yellow'
   | 'blue'
   | 'magenta'
   | 'cyan'
-  | 'white';
+  | 'white'
+  | 'gray'
+  | 'grey'
+  | 'blackBright'
+  | 'redBright'
+  | 'greenBright'
+  | 'yellowBright'
+  | 'blueBright'
+  | 'magentaBright'
+  | 'cyanBright'
+  | 'whiteBright';
 
-export type Style = Color | 'dim' | 'bold' | 'reset' | 'inverse';
+export type BackgroundColor =
+  | 'bgBlack'
+  | 'bgRed'
+  | 'bgGreen'
+  | 'bgYellow'
+  | 'bgBlue'
+  | 'bgMagenta'
+  | 'bgCyan'
+  | 'bgWhite'
+  | 'bgGray'
+  | 'bgGrey'
+  | 'bgBlackBright'
+  | 'bgRedBright'
+  | 'bgGreenBright'
+  | 'bgYellowBright'
+  | 'bgBlueBright'
+  | 'bgMagentaBright'
+  | 'bgCyanBright'
+  | 'bgWhiteBright';
 
-export type Logger = {[K in Style]: Logger} & ((msg: string) => string);
+export type Color = ForegroundColor | BackgroundColor;
+
+export type Style = Color | 'dim' | 'bold' | 'reset' | 'inverse' | 'underline';
+
+export type Logger = {[K in Style]: Logger} & ((msg: string) => string) & {
+    supportsColor: boolean;
+  };

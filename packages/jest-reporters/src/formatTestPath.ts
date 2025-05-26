@@ -6,8 +6,8 @@
  */
 
 import * as path from 'path';
-import chalk = require('chalk');
 import slash = require('slash');
+import {JestLogger} from '@jest/logger';
 import type {Config} from '@jest/types';
 import relativePath from './relativePath';
 
@@ -16,5 +16,5 @@ export default function formatTestPath(
   testPath: string,
 ): string {
   const {dirname, basename} = relativePath(config, testPath);
-  return slash(chalk.dim(dirname + path.sep) + chalk.bold(basename));
+  return slash(JestLogger.dim(dirname + path.sep) + JestLogger.bold(basename));
 }

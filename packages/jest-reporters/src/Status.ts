@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
 import stringLength = require('string-length');
+import {JestLogger} from '@jest/logger';
 import type {
   AggregatedResult,
   Test,
@@ -21,7 +21,7 @@ import type {ReporterOnStartOptions} from './types';
 import wrapAnsiString from './wrapAnsiString';
 
 const RUNNING_TEXT = ' RUNS ';
-const RUNNING = `${chalk.reset.inverse.yellow.bold(RUNNING_TEXT)} `;
+const RUNNING = `${JestLogger.reset.inverse.yellow.bold(RUNNING_TEXT)} `;
 
 /**
  * This class is a perf optimization for sorting the list of currently

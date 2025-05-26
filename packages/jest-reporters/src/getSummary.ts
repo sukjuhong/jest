@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {AggregatedResult, Test, TestCaseResult} from '@jest/test-result';
 import {formatTime, pluralize} from 'jest-util';
 import type {SummaryOptions} from './types';
@@ -55,9 +55,9 @@ function renderTime(runTime: number, estimatedTime: number, width: number) {
   // If we are more than one second over the estimated time, highlight it.
   const renderedTime =
     estimatedTime && runTime >= estimatedTime + 1
-      ? chalk.bold.yellow(formatTime(runTime, 0))
+      ? JestLogger.bold.yellow(formatTime(runTime, 0))
       : formatTime(runTime, 0);
-  let time = `${chalk.bold('Time:')}        ${renderedTime}`;
+  let time = `${JestLogger.bold('Time:')}        ${renderedTime}`;
   if (runTime < estimatedTime) {
     time += `, estimated ${formatTime(estimatedTime, 0)}`;
   }
@@ -71,9 +71,9 @@ function renderTime(runTime: number, estimatedTime: number, width: number) {
       availableWidth,
     );
     if (availableWidth >= 2) {
-      time += `\n${chalk.green('█').repeat(length)}${chalk
-        .white('█')
-        .repeat(availableWidth - length)}`;
+      time += `\n${JestLogger.green('█').repeat(length)}${JestLogger.white(
+        '█',
+      ).repeat(availableWidth - length)}`;
     }
   }
   return time;
@@ -121,16 +121,18 @@ export default function getSummary(
     if (seed === undefined) {
       throw new Error('Attempted to display seed but seed value is undefined');
     }
-    optionalLines.push(`${chalk.bold('Seed:        ') + seed}`);
+    optionalLines.push(`${JestLogger.bold('Seed:        ') + seed}`);
   }
 
   const suites = `${
-    chalk.bold('Test Suites: ') +
-    (suitesFailed ? `${chalk.bold.red(`${suitesFailed} failed`)}, ` : '') +
+    JestLogger.bold('Test Suites: ') +
+    (suitesFailed ? `${JestLogger.bold.red(`${suitesFailed} failed`)}, ` : '') +
     (suitesPending
-      ? `${chalk.bold.yellow(`${suitesPending} skipped`)}, `
+      ? `${JestLogger.bold.yellow(`${suitesPending} skipped`)}, `
       : '') +
-    (suitesPassed ? `${chalk.bold.green(`${suitesPassed} passed`)}, ` : '') +
+    (suitesPassed
+      ? `${JestLogger.bold.green(`${suitesPassed} passed`)}, `
+      : '') +
     (suitesRun === suitesTotal ? suitesTotal : `${suitesRun} of ${suitesTotal}`)
   } total`;
 
@@ -145,50 +147,50 @@ export default function getSummary(
     testsTotal + valuesForCurrentTestCases.numTotalTests;
 
   const tests = `${
-    chalk.bold('Tests:       ') +
+    JestLogger.bold('Tests:       ') +
     (updatedTestsFailed > 0
-      ? `${chalk.bold.red(`${updatedTestsFailed} failed`)}, `
+      ? `${JestLogger.bold.red(`${updatedTestsFailed} failed`)}, `
       : '') +
     (updatedTestsPending > 0
-      ? `${chalk.bold.yellow(`${updatedTestsPending} skipped`)}, `
+      ? `${JestLogger.bold.yellow(`${updatedTestsPending} skipped`)}, `
       : '') +
     (updatedTestsTodo > 0
-      ? `${chalk.bold.magenta(`${updatedTestsTodo} todo`)}, `
+      ? `${JestLogger.bold.magenta(`${updatedTestsTodo} todo`)}, `
       : '') +
     (updatedTestsPassed > 0
-      ? `${chalk.bold.green(`${updatedTestsPassed} passed`)}, `
+      ? `${JestLogger.bold.green(`${updatedTestsPassed} passed`)}, `
       : '')
   }${updatedTestsTotal} total`;
 
   const snapshots = `${
-    chalk.bold('Snapshots:   ') +
+    JestLogger.bold('Snapshots:   ') +
     (snapshotsFailed
-      ? `${chalk.bold.red(`${snapshotsFailed} failed`)}, `
+      ? `${JestLogger.bold.red(`${snapshotsFailed} failed`)}, `
       : '') +
     (snapshotsOutdated && !snapshotsDidUpdate
-      ? `${chalk.bold.yellow(`${snapshotsOutdated} obsolete`)}, `
+      ? `${JestLogger.bold.yellow(`${snapshotsOutdated} obsolete`)}, `
       : '') +
     (snapshotsOutdated && snapshotsDidUpdate
-      ? `${chalk.bold.green(`${snapshotsOutdated} removed`)}, `
+      ? `${JestLogger.bold.green(`${snapshotsOutdated} removed`)}, `
       : '') +
     (snapshotsFilesRemoved && !snapshotsDidUpdate
-      ? `${chalk.bold.yellow(
+      ? `${JestLogger.bold.yellow(
           `${pluralize('file', snapshotsFilesRemoved)} obsolete`,
         )}, `
       : '') +
     (snapshotsFilesRemoved && snapshotsDidUpdate
-      ? `${chalk.bold.green(
+      ? `${JestLogger.bold.green(
           `${pluralize('file', snapshotsFilesRemoved)} removed`,
         )}, `
       : '') +
     (snapshotsUpdated
-      ? `${chalk.bold.green(`${snapshotsUpdated} updated`)}, `
+      ? `${JestLogger.bold.green(`${snapshotsUpdated} updated`)}, `
       : '') +
     (snapshotsAdded
-      ? `${chalk.bold.green(`${snapshotsAdded} written`)}, `
+      ? `${JestLogger.bold.green(`${snapshotsAdded} written`)}, `
       : '') +
     (snapshotsPassed
-      ? `${chalk.bold.green(`${snapshotsPassed} passed`)}, `
+      ? `${JestLogger.bold.green(`${snapshotsPassed} passed`)}, `
       : '')
   }${snapshotsTotal} total`;
 

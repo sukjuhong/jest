@@ -5,16 +5,16 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {TestResult} from '@jest/test-result';
 import {pluralize} from 'jest-util';
 
 const ARROW = ' \u203A ';
 const DOT = ' \u2022 ';
-const FAIL_COLOR = chalk.bold.red;
-const SNAPSHOT_ADDED = chalk.bold.green;
-const SNAPSHOT_UPDATED = chalk.bold.green;
-const SNAPSHOT_OUTDATED = chalk.bold.yellow;
+const FAIL_COLOR = JestLogger.bold.red;
+const SNAPSHOT_ADDED = JestLogger.bold.green;
+const SNAPSHOT_UPDATED = JestLogger.bold.green;
+const SNAPSHOT_OUTDATED = JestLogger.bold.yellow;
 
 export default function getSnapshotStatus(
   snapshot: TestResult['snapshot'],

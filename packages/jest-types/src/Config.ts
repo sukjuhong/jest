@@ -5,11 +5,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type {ForegroundColor} from 'chalk';
 import type {ReportOptions} from 'istanbul-reports';
 import type {Arguments} from 'yargs';
 import type {TestPathPatterns} from '@jest/pattern';
 import type {InitialOptions, SnapshotFormat} from '@jest/schemas';
+import type {ForegroundColor} from './Logger';
 
 export type {InitialOptions} from '@jest/schemas';
 
@@ -216,7 +216,7 @@ export type DefaultOptions = {
 
 export type DisplayName = {
   name: string;
-  color: typeof ForegroundColor;
+  color: ForegroundColor;
 };
 
 export type InitialOptionsWithRootDir = InitialOptions &

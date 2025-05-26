@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import type {Config} from '@jest/types';
 
 export default function printDisplayName(config: Config.ProjectConfig): string {
   const {displayName} = config;
-  const white = chalk.reset.inverse.white;
+  const white = JestLogger.reset.inverse.white;
   if (!displayName) {
     return '';
   }
 
   const {name, color} = displayName;
-  const chosenColor = chalk.reset.inverse[color] ?? white;
-  return chalk.supportsColor ? chosenColor(` ${name} `) : name;
+  const chosenColor = JestLogger.reset.inverse[color] ?? white;
+  return JestLogger.supportsColor ? chosenColor(` ${name} `) : name;
 }
