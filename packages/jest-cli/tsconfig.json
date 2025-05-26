@@ -9,6 +9,7 @@
   "references": [
     {"path": "../jest-config"},
     {"path": "../jest-core"},
+    {"path": "../jest-logger"},
     {"path": "../jest-test-result"},
     {"path": "../jest-types"},
     {"path": "../jest-util"},

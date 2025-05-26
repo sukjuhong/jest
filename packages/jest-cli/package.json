@@ -18,7 +18,7 @@
     "@jest/core": "workspace:*",
     "@jest/test-result": "workspace:*",
     "@jest/types": "workspace:*",
-    "chalk": "^4.0.0",
+    "@jest/logger": "workspace:*",
     "exit-x": "^0.2.2",
     "import-local": "^3.0.2",
     "jest-config": "workspace:*",
