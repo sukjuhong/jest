@@ -29,10 +29,7 @@ export function createPicocolorsLogger(
 
   const handler = {
     apply(_target: any, _thisArg: any, args: [string]) {
-      const styledMsg = fn(args[0]);
-      // eslint-disable-next-line no-console
-      console.log(styledMsg);
-      return styledMsg;
+      return fn(args[0]);
     },
     get(_target: any, prop: string | symbol) {
       if (typeof prop === 'string' && prop in pc) {
