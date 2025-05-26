@@ -5,18 +5,27 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import pc from 'picocolors';
+import {createColors} from 'picocolors';
 import type {Logger} from '@jest/types';
 
-type PicocolorsStyle = keyof typeof pc;
+type PicocolorsStyle = keyof ReturnType<typeof createColors>;
 type PicocolorsStyleFn = (text: string) => string;
 
+interface CreatePicocolorsLoggerStates {
+  disableStyle?: boolean;
+  styles?: Array<PicocolorsStyle>;
+}
+
 export function createPicocolorsLogger(
-  styles: Array<PicocolorsStyle> = [],
+  state?: CreatePicocolorsLoggerStates,
 ): Logger.Logger {
+  const {disableStyle = false, styles = []} = state ?? {};
+
+  const pc = createColors(!disableStyle);
+
   const fn = (msg: string | undefined) => {
     if (!msg) return '';
-    if (styles.length === 0) return msg;
+    if (disableStyle || styles.length === 0) return msg;
     return msg
       .split('\n')
       .map(line => {
@@ -38,7 +47,10 @@ export function createPicocolorsLogger(
       }
 
       if (typeof prop === 'string' && prop in pc) {
-        return createPicocolorsLogger([...styles, prop as PicocolorsStyle]);
+        return createPicocolorsLogger({
+          disableStyle,
+          styles: [...styles, prop as PicocolorsStyle],
+        });
       }
 
       return undefined;
