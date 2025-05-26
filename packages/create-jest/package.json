@@ -22,8 +22,8 @@
     "./bin/create-jest": "./bin/create-jest.js"
   },
   "dependencies": {
+    "@jest/logger": "workspace:*",
     "@jest/types": "workspace:*",
-    "chalk": "^4.0.0",
     "exit-x": "^0.2.2",
     "graceful-fs": "^4.2.9",
     "jest-config": "workspace:*",

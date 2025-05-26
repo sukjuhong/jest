@@ -14,7 +14,8 @@ type PicocolorsStyleFn = (text: string) => string;
 export function createPicocolorsLogger(
   styles: Array<PicocolorsStyle> = [],
 ): Logger.Logger {
-  const fn = (msg: string) => {
+  const fn = (msg: string | undefined) => {
+    if (!msg) return '';
     if (styles.length === 0) return msg;
     return msg
       .split('\n')

@@ -49,6 +49,8 @@ export type Color = ForegroundColor | BackgroundColor;
 
 export type Style = Color | 'dim' | 'bold' | 'reset' | 'inverse' | 'underline';
 
-export type Logger = {[K in Style]: Logger} & ((msg: string) => string) & {
+export type Logger = {[K in Style]: Logger} & ((
+  msg?: string | unknown,
+) => string) & {
     supportsColor: boolean;
   };
