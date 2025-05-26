@@ -5,13 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export type Style =
+export type Color =
   | 'red'
-  | 'yellow'
   | 'green'
-  | 'dim'
-  | 'bold'
-  | 'reset'
-  | 'inverse';
+  | 'yellow'
+  | 'blue'
+  | 'magenta'
+  | 'cyan'
+  | 'white';
+
+export type Style = Color | 'dim' | 'bold' | 'reset' | 'inverse';
 
 export type Logger = {[K in Style]: Logger} & ((msg: string) => string);

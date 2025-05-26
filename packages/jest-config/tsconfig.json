@@ -13,6 +13,7 @@
     {"path": "../jest-docblock"},
     {"path": "../jest-environment-node"},
     {"path": "../jest-get-type"},
+    {"path": "../jest-logger"},
     {"path": "../jest-pattern"},
     {"path": "../jest-regex-util"},
     {"path": "../jest-resolve"},

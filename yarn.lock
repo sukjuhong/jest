@@ -3873,7 +3873,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@jest/logger@workspace:packages/jest-logger":
+"@jest/logger@workspace:*, @jest/logger@workspace:packages/jest-logger":
   version: 0.0.0-use.local
   resolution: "@jest/logger@workspace:packages/jest-logger"
   dependencies:
@@ -13548,10 +13548,10 @@ __metadata:
   resolution: "jest-cli@workspace:packages/jest-cli"
   dependencies:
     "@jest/core": "workspace:*"
+    "@jest/logger": "workspace:*"
     "@jest/test-result": "workspace:*"
     "@jest/types": "workspace:*"
     "@types/yargs": ^17.0.8
-    chalk: ^4.0.0
     exit-x: ^0.2.2
     import-local: ^3.0.2
     jest-config: "workspace:*"
@@ -13573,6 +13573,7 @@ __metadata:
   resolution: "jest-config@workspace:packages/jest-config"
   dependencies:
     "@babel/core": ^7.11.6
+    "@jest/logger": "workspace:*"
     "@jest/pattern": "workspace:*"
     "@jest/test-sequencer": "workspace:*"
     "@jest/types": "workspace:*"
@@ -13580,7 +13581,6 @@ __metadata:
     "@types/micromatch": ^4.0.7
     "@types/parse-json": ^4.0.0
     babel-jest: "workspace:*"
-    chalk: ^4.0.0
     ci-info: ^4.0.0
     deepmerge: ^4.2.2
     esbuild: ^0.25.0
@@ -13644,8 +13644,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jest-each@workspace:packages/jest-each"
   dependencies:
+    "@jest/logger": "workspace:*"
     "@jest/types": "workspace:*"
-    chalk: ^4.0.0
     jest-get-type: "workspace:*"
     jest-util: "workspace:*"
     pretty-format: "workspace:*"

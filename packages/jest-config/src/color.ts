@@ -6,11 +6,9 @@
  */
 
 import {createHash} from 'crypto';
-import type {ForegroundColor} from 'chalk';
+import type {Logger} from '@jest/types';
 
-type Color = typeof ForegroundColor;
-
-const colors: Array<Color> = [
+const colors: Array<Logger.Color> = [
   'red',
   'green',
   'yellow',
@@ -20,7 +18,7 @@ const colors: Array<Color> = [
   'white',
 ];
 
-export const getDisplayNameColor = (seed?: string): Color => {
+export const getDisplayNameColor = (seed?: string): Logger.Color => {
   if (seed === undefined) {
     return 'white';
   }
