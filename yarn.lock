@@ -3722,10 +3722,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@jest/console@workspace:packages/jest-console"
   dependencies:
+    "@jest/logger": "workspace:*"
     "@jest/test-utils": "workspace:*"
     "@jest/types": "workspace:*"
     "@types/node": "*"
-    chalk: ^4.0.0
     jest-message-util: "workspace:*"
     jest-util: "workspace:*"
     slash: ^3.0.0

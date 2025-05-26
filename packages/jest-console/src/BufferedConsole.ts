@@ -8,7 +8,7 @@
 import {AssertionError, strict as assert} from 'assert';
 import {Console} from 'console';
 import {type InspectOptions, format, formatWithOptions, inspect} from 'util';
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import {ErrorWithStack, formatTime, invariant} from 'jest-util';
 import type {
   ConsoleBuffer,
@@ -116,7 +116,7 @@ export default class BufferedConsole extends Console {
     this._groupDepth++;
 
     if (title != null || rest.length > 0) {
-      this._log('group', chalk.bold(format(title, ...rest)));
+      this._log('group', JestLogger.bold(format(title, ...rest)));
     }
   }
 
@@ -124,7 +124,7 @@ export default class BufferedConsole extends Console {
     this._groupDepth++;
 
     if (title != null || rest.length > 0) {
-      this._log('groupCollapsed', chalk.bold(format(title, ...rest)));
+      this._log('groupCollapsed', JestLogger.bold(format(title, ...rest)));
     }
   }
 
