@@ -6,13 +6,13 @@
  */
 
 import type {WriteStream} from 'tty';
-import chalk = require('chalk');
+import {JestLogger} from '@jest/logger';
 import clearLine from './clearLine';
 import isInteractive from './isInteractive';
 
 export function print(stream: WriteStream): void {
   if (isInteractive) {
-    stream.write(chalk.bold.dim('Determining test suites to run...'));
+    stream.write(JestLogger.bold.dim('Determining test suites to run...'));
   }
 }
 
