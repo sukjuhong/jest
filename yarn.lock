@@ -3873,6 +3873,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@jest/logger@workspace:packages/jest-logger":
+  version: 0.0.0-use.local
+  resolution: "@jest/logger@workspace:packages/jest-logger"
+  dependencies:
+    "@jest/globals": "workspace:*"
+    "@jest/types": "workspace:*"
+    "@types/node": "*"
+    picocolors: ^1.1.1
+  languageName: unknown
+  linkType: soft
+
 "@jest/monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@jest/monorepo@workspace:."
