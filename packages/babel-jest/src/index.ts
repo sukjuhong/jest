@@ -13,9 +13,9 @@ import {
   transformSync as babelTransform,
   transformAsync as babelTransformAsync,
 } from '@babel/core';
-import chalk = require('chalk');
 import * as fs from 'graceful-fs';
 import slash = require('slash');
+import {JestLogger} from '@jest/logger';
 import type {
   TransformOptions as JestTransformOptions,
   SyncTransformer,
@@ -38,9 +38,9 @@ function assertLoadedBabelConfig(
 ): asserts babelConfig {
   if (!babelConfig) {
     throw new Error(
-      `babel-jest: Babel ignores ${chalk.bold(
+      `babel-jest: Babel ignores ${JestLogger.bold(
         slash(path.relative(cwd, filename)),
-      )} - make sure to include the file in Jest's ${chalk.bold(
+      )} - make sure to include the file in Jest's ${JestLogger.bold(
         'transformIgnorePatterns',
       )} as well.`,
     );

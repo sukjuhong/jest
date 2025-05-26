@@ -20,11 +20,11 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
+    "@jest/logger": "workspace:*",
     "@jest/transform": "workspace:*",
     "@types/babel__core": "^7.1.14",
     "babel-plugin-istanbul": "^7.0.0",
     "babel-preset-jest": "workspace:*",
-    "chalk": "^4.0.0",
     "graceful-fs": "^4.2.9",
     "slash": "^3.0.0"
   },
